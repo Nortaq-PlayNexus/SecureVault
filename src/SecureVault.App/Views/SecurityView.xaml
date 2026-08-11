@@ -1,0 +1,65 @@
+<UserControl x:Class="SecureVault.App.Views.SecurityView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Security &amp; health" Style="{StaticResource HeaderText}" Margin="0,0,0,16"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="{StaticResource SurfaceBrush}" CornerRadius="10" Padding="16" Margin="0,0,8,0"
+                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="Vault health check" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,6"/>
+                    <TextBlock x:Name="HealthText" Text="Run a health check to detect weak or breached passwords and phishing-prone URLs." Style="{StaticResource SubText}" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    <Button Content="Run health check" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Click="RunHealthCheck_Click"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Background="{StaticResource SurfaceBrush}" CornerRadius="10" Padding="16" Margin="8,0,0,0"
+                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="Passkeys (FIDO2 / WebAuthn)" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,6"/>
+                    <TextBlock Text="Create and manage Windows Hello-backed passkeys. Private keys stay in the TPM and can't be exported." Style="{StaticResource SubText}" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="New passkey" Style="{StaticResource SecondaryButton}" Click="CreatePasskey_Click" Margin="0,0,8,0"/>
+                        <TextBlock x:Name="HelloStatusText" Text="" Style="{StaticResource SubText}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="2" Background="{StaticResource BgAltBrush}" CornerRadius="10" Padding="16"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Audit log" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                <ListBox x:Name="AuditList" Grid.Row="1" Background="Transparent" BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,3">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding TimestampLabel}" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,8,0"/>
+                                    <TextBlock Text="{Binding ActionLabel}" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Detail}" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

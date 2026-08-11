@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#26262C"/>
+      <stop offset="100%" stop-color="#1E1E22"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6BAEFF"/>
+      <stop offset="100%" stop-color="#2E7BE6"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1280" height="320" fill="url(#bg)"/>
+  <g transform="translate(120, 72) scale(1.72)">
+    <path d="M256 88 L372 132 V244 C372 336 322 396 256 424 C190 396 140 336 140 244 V132 Z" fill="url(#shield)"/>
+    <circle cx="256" cy="244" r="42" fill="#1E1E22"/>
+    <path d="M242 272 h28 v56 a14 14 0 0 1 -14 14 a14 14 0 0 1 -14 -14 Z" fill="#1E1E22"/>
+  </g>
+  <text x="500" y="150" font-family="Segoe UI, sans-serif" font-size="84" font-weight="600" fill="#F2F2F4">SecureVault</text>
+  <text x="500" y="216" font-family="Segoe UI, sans-serif" font-size="34" fill="#A6A6B0"
+        letter-spacing="6">ZERO-KNOWLEDGE PASSWORD VAULT</text>
+  <rect x="504" y="244" width="560" height="3" rx="1.5" fill="#4F9CF9"/>
+</svg>

@@ -1,0 +1,63 @@
+<UserControl x:Class="SecureVault.App.Views.GeneratorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="640" HorizontalAlignment="Left">
+            <TextBlock Text="Password generator" Style="{StaticResource HeaderText}" Margin="0,0,0,4"/>
+            <TextBlock Text="Strong, cryptographically random secrets generated entirely on-device." Style="{StaticResource SubText}" Margin="0,0,0,20"/>
+
+            <TextBlock Text="Generated password" Style="{StaticResource SubText}" Margin="0,0,0,4"/>
+            <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10" Padding="14" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Margin="0,0,0,12">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="OutputBox" Style="{StaticResource InputBox}" IsReadOnly="True" Text=""/>
+                    <Button Grid.Column="1" Content="Copy" Style="{StaticResource SecondaryButton}" Margin="8,0,0,0" Click="Copy_Click"/>
+                </Grid>
+            </Border>
+
+            <TextBlock Text="Length" Style="{StaticResource SubText}" Margin="0,0,0,4"/>
+            <Grid Margin="0,0,0,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <Slider x:Name="LengthSlider" Minimum="8" Maximum="64" Value="20" TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" x:Name="LengthLabel" Text="20" Style="{StaticResource SubText}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16"/>
+            </Grid>
+
+            <CheckBox x:Name="LowercaseBox" Content="Lowercase (a–z)" IsChecked="True" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,6"/>
+            <CheckBox x:Name="UppercaseBox" Content="Uppercase (A–Z)" IsChecked="True" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,6"/>
+            <CheckBox x:Name="DigitsBox" Content="Digits (0–9)" IsChecked="True" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,6"/>
+            <CheckBox x:Name="SymbolsBox" Content="Symbols (!@#$…)" IsChecked="True" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,6"/>
+            <CheckBox x:Name="NoAmbiguousBox" Content="Exclude ambiguous characters (Il1O0…)" IsChecked="True" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,16"/>
+
+            <Button Content="Generate password" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Click="Generate_Click" Margin="0,0,0,24"/>
+
+            <TextBlock Text="Passphrase (Diceware-style)" Style="{StaticResource HeaderText}" FontSize="18" Margin="0,0,0,8"/>
+            <Grid Margin="0,0,0,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="PassphraseOutputBox" Style="{StaticResource InputBox}" IsReadOnly="True" Text=""/>
+                <Button Grid.Column="1" Content="Copy" Style="{StaticResource SecondaryButton}" Margin="8,0,0,0" Click="CopyPhrase_Click"/>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                <TextBlock Text="Words:" Style="{StaticResource SubText}" VerticalAlignment="Center"/>
+                <ComboBox x:Name="WordCountBox" SelectedIndex="3" Margin="8,0,0,0" Padding="6,4">
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5"/>
+                    <ComboBoxItem Content="6"/>
+                    <ComboBoxItem Content="7"/>
+                    <ComboBoxItem Content="8"/>
+                </ComboBox>
+            </StackPanel>
+            <Button Content="Generate passphrase" Style="{StaticResource SecondaryButton}" HorizontalAlignment="Left" Click="GeneratePhrase_Click"/>
+
+            <TextBlock x:Name="EntropyText" Style="{StaticResource SubText}" TextWrapping="Wrap" Margin="0,20,0,0"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

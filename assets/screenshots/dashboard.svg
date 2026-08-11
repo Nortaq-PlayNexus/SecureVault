@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <defs>
+    <linearGradient id="shd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6BAEFF"/>
+      <stop offset="100%" stop-color="#2E7BE6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="#1E1E22"/>
+
+  <!-- sidebar -->
+  <rect width="205" height="520" fill="#26262C"/>
+  <g transform="translate(18,18) scale(0.14)">
+    <path d="M256 88 L372 132 V244 C372 336 322 396 256 424 C190 396 140 336 140 244 V132 Z" fill="url(#shd)"/>
+    <circle cx="256" cy="244" r="42" fill="#26262C"/>
+    <path d="M242 272 h28 v56 a14 14 0 0 1 -14 14 a14 14 0 0 1 -14 -14 Z" fill="#26262C"/>
+  </g>
+  <text x="48" y="40" font-family="Segoe UI, sans-serif" font-size="19" font-weight="600" fill="#F2F2F4">My Vault</text>
+  <circle cx="48" cy="58" r="4" fill="#3FB950"/>
+  <text x="58" y="62" font-family="Segoe UI, sans-serif" font-size="12" fill="#A6A6B0">Unlocked · synced 2m ago</text>
+
+  <rect x="10" y="84" width="185" height="36" rx="8" fill="#3A3A44"/>
+  <text x="24" y="107" font-family="Segoe UI, sans-serif" font-size="15" fill="#F2F2F4">▤  Items</text>
+  <text x="24" y="151" font-family="Segoe UI, sans-serif" font-size="15" fill="#A6A6B0">⚙  Password generator</text>
+  <text x="24" y="195" font-family="Segoe UI, sans-serif" font-size="15" fill="#A6A6B0">◉  Security &amp; health</text>
+  <text x="24" y="239" font-family="Segoe UI, sans-serif" font-size="15" fill="#A6A6B0">▦  Settings</text>
+
+  <rect x="16" y="452" width="173" height="36" rx="8" fill="#2E2E36" stroke="#3C3C46"/>
+  <text x="102" y="475" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" fill="#F2F2F4">Lock vault</text>
+  <text x="102" y="504" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#A6A6B0">v1.0.0</text>
+
+  <!-- content -->
+  <text x="232" y="38" font-family="Segoe UI, sans-serif" font-size="22" font-weight="600" fill="#F2F2F4">Items</text>
+  <text x="232" y="60" font-family="Segoe UI, sans-serif" font-size="13" fill="#A6A6B0">8 items · 2 favorites</text>
+
+  <rect x="232" y="78" width="330" height="38" rx="8" fill="#26262C" stroke="#3C3C46"/>
+  <text x="248" y="102" font-family="Segoe UI, sans-serif" font-size="14" fill="#A6A6B0">Search title, username, or URL…</text>
+
+  <rect x="610" y="78" width="162" height="38" rx="8" fill="#4F9CF9"/>
+  <text x="691" y="102" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">＋ New item</text>
+
+  <!-- item rows -->
+  <g font-family="Segoe UI, sans-serif">
+    <rect x="232" y="132" width="540" height="52" rx="8" fill="#2E2E36" stroke="#4F9CF9" stroke-width="1.5"/>
+    <text x="252" y="156" font-size="15" fill="#F2F2F4">GitHub</text>
+    <text x="252" y="174" font-size="12" fill="#A6A6B0">octocat · github.com</text>
+    <text x="746" y="156" font-size="12" fill="#A6A6B0">Today</text>
+    <text x="700" y="156" font-size="14" fill="#D29922">★</text>
+
+    <rect x="232" y="192" width="540" height="52" rx="8" fill="#2E2E36"/>
+    <text x="252" y="216" font-size="15" fill="#F2F2F4">Chase Bank</text>
+    <text x="252" y="234" font-size="12" fill="#A6A6B0">john.doe · chase.com</text>
+    <text x="746" y="216" font-size="12" fill="#A6A6B0">Yesterday</text>
+    <text x="700" y="216" font-size="14" fill="#3C3C46">★</text>
+
+    <rect x="232" y="252" width="540" height="52" rx="8" fill="#2E2E36"/>
+    <text x="252" y="276" font-size="15" fill="#F2F2F4">Wi-Fi — Router 2.4G</text>
+    <text x="252" y="294" font-size="12" fill="#A6A6B0">Login · 2FA configured</text>
+    <text x="746" y="276" font-size="12" fill="#A6A6B0">Aug 1</text>
+    <text x="700" y="276" font-size="14" fill="#3C3C46">★</text>
+
+    <rect x="232" y="312" width="540" height="52" rx="8" fill="#2E2E36"/>
+    <text x="252" y="336" font-size="15" fill="#F2F2F4">AWS access key</text>
+    <text x="252" y="354" font-size="12" fill="#A6A6B0">API token · expires Dec 2026</text>
+    <text x="746" y="336" font-size="12" fill="#A6A6B0">Jul 30</text>
+    <text x="700" y="336" font-size="14" fill="#3C3C46">★</text>
+
+    <rect x="232" y="372" width="540" height="52" rx="8" fill="#2E2E36"/>
+    <text x="252" y="396" font-size="15" fill="#F2F2F4">Deed — house.pdf</text>
+    <text x="252" y="414" font-size="12" fill="#A6A6B0">File · 1.2 MB</text>
+    <text x="746" y="396" font-size="12" fill="#A6A6B0">Jul 28</text>
+    <text x="700" y="396" font-size="14" fill="#3C3C46">★</text>
+  </g>
+</svg>

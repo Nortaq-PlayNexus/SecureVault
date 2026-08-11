@@ -1,0 +1,16 @@
+.git
+.gitignore
+.gitattributes
+.github
+bin
+obj
+TestResults
+*.suo
+*.user
+.vs
+.idea
+.vscode
+publish
+artifacts
+assets/icons
+eng

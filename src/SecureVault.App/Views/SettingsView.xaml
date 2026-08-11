@@ -1,0 +1,112 @@
+<UserControl x:Class="SecureVault.App.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="760" HorizontalAlignment="Left">
+            <TextBlock Text="Settings" Style="{StaticResource HeaderText}" Margin="0,0,0,16"/>
+
+            <!-- General -->
+            <TextBlock Text="General" Style="{StaticResource HeaderText}" FontSize="17" Margin="0,0,0,8"/>
+            <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10" Padding="16" Margin="0,0,0,18"
+                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="Vault name" Style="{StaticResource SubText}" Margin="0,0,0,4"/>
+                    <TextBox x:Name="VaultNameBox" Style="{StaticResource InputBox}" Margin="0,0,0,14" Width="320" HorizontalAlignment="Left"/>
+
+                    <Grid Margin="0,0,0,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Auto-lock after" Style="{StaticResource TextPrimaryBrush}" FontSize="14" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                        <TextBlock Text="minutes" Style="{StaticResource SubText}" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,12,0"/>
+                        <TextBox x:Name="AutoLockBox" Style="{StaticResource InputBox}" Grid.Column="2" Text="5"/>
+                    </Grid>
+                    <CheckBox x:Name="AutoLockEnabledBox" Content="Enable automatic locking" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,12"/>
+
+                    <TextBlock Text="Clipboard clearing" Style="{StaticResource SubText}" Margin="0,0,0,4"/>
+                    <Grid Margin="0,0,0,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Clear copied secrets after" Style="{StaticResource TextPrimaryBrush}" FontSize="14" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                        <TextBlock Text="seconds" Style="{StaticResource SubText}" VerticalAlignment="Center" Grid.Column="1" Margin="0,0,12,0"/>
+                        <TextBox x:Name="ClipboardSecondsBox" Style="{StaticResource InputBox}" Grid.Column="2" Text="30"/>
+                    </Grid>
+                    <CheckBox x:Name="ClipboardEnabledBox" Content="Enable clipboard auto-clearing" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,12"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Security -->
+            <TextBlock Text="Security" Style="{StaticResource HeaderText}" FontSize="17" Margin="0,0,0,8"/>
+            <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10" Padding="16" Margin="0,0,0,18"
+                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                <StackPanel>
+                    <CheckBox x:Name="HardwareUnlockBox" Content="Allow unlock with TPM hardware key (no password)" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,4"
+                              Checked="HardwareUnlockBox_Changed" Unchecked="HardwareUnlockBox_Changed"/>
+                    <CheckBox x:Name="HelloUnlockBox" Content="Allow Windows Hello (biometric) unlock" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,4"
+                              Checked="HelloUnlockBox_Changed" Unchecked="HelloUnlockBox_Changed"/>
+                    <CheckBox x:Name="BreachCheckBox" Content="Enable breach intelligence (HaveIBeenPwned, k-anonymous)" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,12"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                        <TextBlock Text="Master password" Style="{StaticResource SubText}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <PasswordBox x:Name="CurrentPasswordBox" Style="{StaticResource PasswordBoxStyle}" Width="200" Margin="0,0,8,0"/>
+                        <PasswordBox x:Name="NewPasswordBox" Style="{StaticResource PasswordBoxStyle}" Width="200" Margin="0,0,8,0"/>
+                        <Button Content="Change password" Style="{StaticResource SecondaryButton}" Click="ChangePassword_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Backups -->
+            <TextBlock Text="Encrypted backups" Style="{StaticResource HeaderText}" FontSize="17" Margin="0,0,0,8"/>
+            <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10" Padding="16" Margin="0,0,0,18"
+                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <Button Content="Back up now…" Style="{StaticResource SecondaryButton}" Click="BackupNow_Click" Margin="0,0,8,0"/>
+                        <Button Content="Restore from backup…" Style="{StaticResource SecondaryButton}" Click="RestoreBackup_Click"/>
+                    </StackPanel>
+                    <TextBlock x:Name="BackupStatusText" Style="{StaticResource SubText}" TextWrapping="Wrap" Margin="0,0,0,8"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Sync -->
+            <TextBlock Text="End-to-end encrypted sync" Style="{StaticResource HeaderText}" FontSize="17" Margin="0,0,0,8"/>
+            <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10" Padding="16" Margin="0,0,0,18"
+                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                <StackPanel>
+                    <ComboBox x:Name="SyncProviderBox" Style="{StaticResource ComboStyle}" SelectionChanged="SyncProviderBox_SelectionChanged" Margin="0,0,0,8">
+                        <ComboBoxItem Content="None (offline only)"/>
+                        <ComboBoxItem Content="Local folder (e.g. Dropbox / OneDrive mount)"/>
+                        <ComboBoxItem Content="WebDAV server"/>
+                    </ComboBox>
+
+                    <TextBlock x:Name="SyncFolderLabel" Text="Folder path" Style="{StaticResource SubText}" Margin="0,0,0,4"/>
+                    <TextBox x:Name="SyncFolderBox" Style="{StaticResource InputBox}" Margin="0,0,0,8"/>
+
+                    <StackPanel x:Name="WebDavPanel" Visibility="Collapsed">
+                        <TextBlock Text="WebDAV URL" Style="{StaticResource SubText}" Margin="0,0,0,4"/>
+                        <TextBox x:Name="WebDavUrlBox" Style="{StaticResource InputBox}" Margin="0,0,0,8"/>
+                        <TextBlock Text="Username" Style="{StaticResource SubText}" Margin="0,0,0,4"/>
+                        <TextBox x:Name="WebDavUserBox" Style="{StaticResource InputBox}" Margin="0,0,0,8"/>
+                        <TextBlock Text="Password" Style="{StaticResource SubText}" Margin="0,0,0,4"/>
+                        <PasswordBox x:Name="WebDavPassBox" Style="{StaticResource PasswordBoxStyle}" Margin="0,0,0,8"/>
+                        <TextBlock Text="Note: WebDAV credentials are stored only in your local DPAPI-protected config, never in the vault or on the remote." Style="{StaticResource SubText}" TextWrapping="Wrap" Margin="0,0,0,8"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                        <Button Content="Sync now" Style="{StaticResource PrimaryButton}" Click="SyncNow_Click" Margin="0,0,8,0"/>
+                        <Button Content="Push" Style="{StaticResource SecondaryButton}" Click="SyncPush_Click" Margin="0,0,8,0"/>
+                        <Button Content="Pull" Style="{StaticResource SecondaryButton}" Click="SyncPull_Click"/>
+                    </StackPanel>
+                    <TextBlock x:Name="SyncStatusText" Style="{StaticResource SubText}" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <TextBlock x:Name="StatusText" Style="{StaticResource SubText}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

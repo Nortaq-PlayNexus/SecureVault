@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <defs>
+    <linearGradient id="sbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6BAEFF"/>
+      <stop offset="100%" stop-color="#2E7BE6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="#1E1E22"/>
+
+  <text x="40" y="38" font-family="Segoe UI, sans-serif" font-size="22" font-weight="600" fill="#F2F2F4">Security &amp; health</text>
+  <text x="40" y="60" font-family="Segoe UI, sans-serif" font-size="13" fill="#A6A6B0">Passwords never leave your device — checks are local and k-anonymous.</text>
+
+  <!-- health check card -->
+  <rect x="40" y="82" width="720" height="150" rx="12" fill="#2E2E36"/>
+  <text x="58" y="112" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600" fill="#F2F2F4">Breach &amp; phishing scan</text>
+  <rect x="58" y="128" width="684" height="1" fill="#3C3C46"/>
+  <g font-family="Segoe UI, sans-serif" font-size="13">
+    <text x="58" y="158" fill="#3FB950">✓ All 8 passwords are strong and have not been found in known breaches</text>
+    <text x="58" y="182" fill="#3FB950">✓ No phishing or lookalike domains detected</text>
+    <text x="58" y="206" fill="#D29922">⚠ “work-email” (Amazon) is reused elsewhere — consider rotating it</text>
+  </g>
+  <rect x="610" y="98" width="132" height="38" rx="8" fill="#4F9CF9"/>
+  <text x="676" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Run scan</text>
+
+  <!-- status strip -->
+  <g font-family="Segoe UI, sans-serif">
+    <rect x="40" y="248" width="232" height="96" rx="12" fill="#2E2E36"/>
+    <text x="58" y="276" font-size="14" font-weight="600" fill="#F2F2F4">Windows Hello</text>
+    <circle cx="58" cy="306" r="5" fill="#3FB950"/>
+    <text x="72" y="310" font-size="12" fill="#A6A6B0">Available · hardware-backed</text>
+
+    <rect x="284" y="248" width="232" height="96" rx="12" fill="#2E2E36"/>
+    <text x="302" y="276" font-size="14" font-weight="600" fill="#F2F2F4">Hardware unlock</text>
+    <circle cx="302" cy="306" r="5" fill="#3FB950"/>
+    <text x="316" y="310" font-size="12" fill="#A6A6B0">TPM 2.0 · DPAPI fallback</text>
+
+    <rect x="528" y="248" width="232" height="96" rx="12" fill="#2E2E36"/>
+    <text x="546" y="276" font-size="14" font-weight="600" fill="#F2F2F4">Last sync</text>
+    <circle cx="546" cy="306" r="5" fill="#3FB950"/>
+    <text x="560" y="310" font-size="12" fill="#A6A6B0">2 minutes ago · folder</text>
+  </g>
+
+  <!-- audit log -->
+  <rect x="40" y="360" width="720" height="150" rx="12" fill="#2E2E36"/>
+  <text x="58" y="390" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600" fill="#F2F2F4">Audit log</text>
+  <text x="736" y="390" font-family="Segoe UI, sans-serif" font-size="12" fill="#A6A6B0" text-anchor="end">tamper-evident</text>
+  <g font-family="Consolas, monospace" font-size="12">
+    <text x="58" y="422" fill="#A6A6B0">2026-08-01 09:41:02  </text><text x="250" y="422" fill="#F2F2F4">VaultUnlocked   </text><text x="470" y="422" fill="#A6A6B0">Unlocked with master password</text>
+    <text x="58" y="444" fill="#A6A6B0">2026-08-01 09:44:17  </text><text x="250" y="444" fill="#F2F2F4">ItemUpdated     </text><text x="470" y="444" fill="#A6A6B0">GitHub (password rotated)</text>
+    <text x="58" y="466" fill="#A6A6B0">2026-08-01 09:47:02  </text><text x="250" y="466" fill="#F2F2F4">SyncCompleted   </text><text x="470" y="466" fill="#A6A6B0">Pushed encrypted vault to folder</text>
+    <text x="58" y="488" fill="#A6A6B0">2026-08-01 09:48:33  </text><text x="250" y="488" fill="#F2F2F4">BackupCreated   </text><text x="470" y="488" fill="#A6A6B0">Backup to D:\backups\vault.svault</text>
+  </g>
+</svg>

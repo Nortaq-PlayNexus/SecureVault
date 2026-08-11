@@ -1,0 +1,38 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- Deterministic builds for reproducible CI artifacts -->
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+
+    <!-- Diagnostics: .NET analyzers at recommended level, style enforced -->
+    <AnalysisLevel>latest</AnalysisLevel>
+    <AnalysisMode>Recommended</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+
+    <!-- Treat warnings as errors in CI / release to keep the codebase clean -->
+    <TreatWarningsAsErrors Condition="'$(Configuration)' == 'Release'">true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors>CA1416</WarningsNotAsErrors>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+
+    <!-- NuGet supply-chain auditing -->
+    <NuGetAudit>true</NuGetAudit>
+
+    <!-- Shared metadata -->
+    <Authors>SecureVault Contributors</Authors>
+    <Company>SecureVault</Company>
+    <Product>SecureVault</Product>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.0</Version>
+    <VersionPrefix>1.0.0</VersionPrefix>
+  </PropertyGroup>
+
+  <!-- .NET 6 SDK global settings -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,14 @@
+# Default owners for everything in the repo.
+* @SecureVault/maintainers
+
+# Cryptography and storage require crypto-context review.
+/src/SecureVault.Core/Crypto/ @SecureVault/crypto-maintainers
+/src/SecureVault.Core/Storage/ @SecureVault/crypto-maintainers
+/src/SecureVault.Core/Vault/ @SecureVault/crypto-maintainers
+
+# Sync & backup formats.
+/src/SecureVault.Core/Sync/ @SecureVault/maintainers
+/src/SecureVault.Core/Backup/ @SecureVault/maintainers
+
+# CI/CD configuration.
+/.github/workflows/ @SecureVault/maintainers

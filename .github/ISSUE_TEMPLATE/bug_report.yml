@@ -1,0 +1,76 @@
+name: Bug report
+description: Report a reproducible problem with SecureVault.
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report. **Never include real vault data,
+        master passwords, or passwords.** If this is a security issue, do not open an issue —
+        follow [SECURITY.md](../../SECURITY.md) instead.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: SecureVault version and how it was installed (release build, self-published, source).
+      placeholder: "1.0.0 (release build)"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Windows version
+      description: Run `winver` in a command prompt.
+      placeholder: "Windows 11 23H2 (22631)"
+    validations:
+      required: true
+  - type: checkboxes
+    id: hardware
+    attributes:
+      label: Environment
+      description: Which hardware/security features apply?
+      options:
+        - label: TPM 2.0 available
+        - label: Windows Hello available
+        - label: Sync enabled (Folder / WebDAV)
+        - label: Hardware unlock enabled
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Exact steps that trigger the bug.
+      placeholder: |
+        1. Create a vault with ...
+        2. Open Settings → ...
+        3. Click ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      placeholder: Include any error text shown by the app.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: Add sanitized logs or screenshots if they contain no secrets.
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Low (cosmetic)
+        - Medium (feature broken with workaround)
+        - High (feature broken, no workaround)
+        - Critical (data loss / security)
+    validations:
+      required: true

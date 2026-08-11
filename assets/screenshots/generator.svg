@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <defs>
+    <linearGradient id="gg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6BAEFF"/>
+      <stop offset="100%" stop-color="#2E7BE6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="#1E1E22"/>
+
+  <text x="40" y="38" font-family="Segoe UI, sans-serif" font-size="22" font-weight="600" fill="#F2F2F4">Password generator</text>
+  <text x="40" y="60" font-family="Segoe UI, sans-serif" font-size="13" fill="#A6A6B0">Cryptographically secure, generated locally on your device.</text>
+
+  <!-- random password card -->
+  <rect x="40" y="82" width="350" height="300" rx="12" fill="#2E2E36"/>
+  <text x="58" y="112" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600" fill="#F2F2F4">Random password</text>
+
+  <text x="58" y="150" font-family="Segoe UI, sans-serif" font-size="13" fill="#A6A6B0">Length</text>
+  <text x="330" y="150" font-family="Segoe UI, sans-serif" font-size="13" fill="#F2F2F4" text-anchor="end">20</text>
+  <rect x="58" y="160" width="314" height="6" rx="3" fill="#3A3A44"/>
+  <rect x="58" y="160" width="200" height="6" rx="3" fill="#4F9CF9"/>
+  <circle cx="258" cy="163" r="8" fill="#6BAEFF" stroke="#1E1E22" stroke-width="2"/>
+
+  <g font-family="Segoe UI, sans-serif" font-size="13" fill="#F2F2F4">
+    <rect x="58" y="188" width="14" height="14" rx="3" fill="#4F9CF9"/><text x="80" y="200">Lowercase (a-z)</text>
+    <rect x="200" y="188" width="14" height="14" rx="3" fill="#4F9CF9"/><text x="222" y="200">Uppercase (A-Z)</text>
+    <rect x="58" y="214" width="14" height="14" rx="3" fill="#4F9CF9"/><text x="80" y="226">Digits (0-9)</text>
+    <rect x="200" y="214" width="14" height="14" rx="3" fill="#4F9CF9"/><text x="222" y="226">Symbols (!@#$)</text>
+    <rect x="58" y="240" width="14" height="14" rx="3" fill="#4F9CF9"/><text x="80" y="252">Exclude ambiguous (Il1O0)</text>
+  </g>
+
+  <rect x="58" y="272" width="314" height="40" rx="8" fill="#26262C" stroke="#3C3C46"/>
+  <text x="74" y="296" font-family="Consolas, monospace" font-size="14" fill="#F2F2F4">vQ#9xT$k2mF&amp;pZ8rN3d@</text>
+
+  <rect x="58" y="326" width="314" height="40" rx="8" fill="#4F9CF9"/>
+  <text x="215" y="351" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Generate</text>
+
+  <!-- passphrase card -->
+  <rect x="410" y="82" width="350" height="300" rx="12" fill="#2E2E36"/>
+  <text x="428" y="112" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600" fill="#F2F2F4">Diceware passphrase</text>
+  <text x="428" y="140" font-family="Segoe UI, sans-serif" font-size="13" fill="#A6A6B0">Words from a 4096-word list</text>
+
+  <text x="428" y="176" font-family="Segoe UI, sans-serif" font-size="13" fill="#A6A6B0">Word count</text>
+  <rect x="428" y="186" width="120" height="34" rx="8" fill="#26262C" stroke="#3C3C46"/>
+  <text x="442" y="209" font-family="Segoe UI, sans-serif" font-size="14" fill="#F2F2F4">6 ▼</text>
+
+  <rect x="428" y="236" width="314" height="74" rx="8" fill="#26262C" stroke="#3C3C46"/>
+  <text x="444" y="266" font-family="Consolas, monospace" font-size="14" fill="#F2F2F4">sierra-candle-drift</text>
+  <text x="444" y="288" font-family="Consolas, monospace" font-size="14" fill="#F2F2F4">jaguar-magnet-ember9</text>
+
+  <rect x="428" y="326" width="314" height="40" rx="8" fill="#4F9CF9"/>
+  <text x="585" y="351" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Generate passphrase</text>
+
+  <text x="40" y="414" font-family="Segoe UI, sans-serif" font-size="13" fill="#3FB950">✓ Estimated entropy: ~108 bits · a 20-char password with all classes is considered strong</text>
+  <text x="40" y="438" font-family="Segoe UI, sans-serif" font-size="13" fill="#A6A6B0">Copied secrets are auto-cleared from the clipboard after 30 seconds (Settings → Clipboard).</text>
+</svg>
