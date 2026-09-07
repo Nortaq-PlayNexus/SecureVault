@@ -1,6 +1,32 @@
-# 🔐 SecureVault
+<p align="center">
+  <img src="https://img.shields.io/badge/SECUREVAULT-HARDWARE%20VAULT-3dd5ff?style=flat-square&labelColor=0a0e1a" alt="securevault" />
+</p>
 
-A local-first, hardware-backed password manager for Windows.
+# SECUREVAULT :: HARDWARE-BACKED PASSWORD MANAGER
+
+**A local-first, hardware-backed password manager for Windows.** AES-256-GCM encryption, Argon2id KDF, TPM-bound unlock, HIBP breach checking, and encrypted sync. No cloud. No account. No telemetry.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/STACK-.NET%20WPF-ffc430?style=flat-square&logo=dotnet&logoColor=ffc430&labelColor=0a0e1a" alt="dotnet"/>
+  <img src="https://img.shields.io/badge/CRYPTO-AES--256--GCM-B8FF1E?style=flat-square&labelColor=0a0e1a" alt="crypto"/>
+  <img src="https://img.shields.io/badge/KDF-ARGON2id-00E5FF?style=flat-square&labelColor=0a0e1a" alt="kdf"/>
+  <img src="https://img.shields.io/badge/HARDWARE-TPM%202.0-3dd5ff?style=flat-square&labelColor=0a0e1a" alt="tpm"/>
+  <img src="https://img.shields.io/badge/LOCAL-FIRST-100%25-B8FF1E?style=flat-square&labelColor=0a0e1a" alt="local"/>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-ff3b3b?style=flat-square&labelColor=0a0e1a" alt="license"/></a>
+</p>
+
+<pre>
+IDENT ......... VAULT-01
+CLASS ......... HARDWARE-BACKED PASSWORD MANAGER
+STATUS ........ ONLINE / ACTIVE
+PLATFORM ...... WINDOWS 10/11 · WPF
+CRYPTO ........ AES-256-GCM · ARGON2ID · TPM
+LINK .......... /SecureVault
+</pre>
+
+---
+
+## // 01 :: SIGNAL
 
 SecureVault is an offline-first WPF application that stores your passwords,
 secrets, and files in an encrypted vault that **never leaves your machine**.
