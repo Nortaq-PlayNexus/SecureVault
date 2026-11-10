@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/SECUREVAULT-HARDWARE%20VAULT-3dd5ff?style=flat-square&labelColor=0a0e1a" alt="securevault" />
+  <img src="https://img.shields.io/badge/SECUREVAULT-LOCAL%20VAULT-3dd5ff?style=flat-square&labelColor=0a0e1a" alt="securevault" />
 </p>
 
-# SECUREVAULT :: HARDWARE-BACKED PASSWORD MANAGER
+# SECUREVAULT :: LOCAL PASSWORD VAULT
 
-**A local-first, hardware-backed password manager for Windows.** AES-256-GCM encryption, Argon2id KDF, TPM-bound unlock, HIBP breach checking, and encrypted sync. No cloud. No account. No telemetry.
+A local-first password-manager project for Windows. Implements AES-256-GCM encryption, Argon2id key derivation, optional TPM/DPAPI key wrapping, HIBP breach checking and encrypted file sync. Hardware wrapping can fall back to Windows DPAPI. This is not an independent security certification.
 
 <p align="center">
   <img src="https://img.shields.io/badge/STACK-.NET%20WPF-ffc430?style=flat-square&logo=dotnet&logoColor=ffc430&labelColor=0a0e1a" alt="dotnet"/>
@@ -17,8 +17,8 @@
 
 <pre>
 IDENT ......... VAULT-01
-CLASS ......... HARDWARE-BACKED PASSWORD MANAGER
-STATUS ........ ONLINE / ACTIVE
+CLASS ......... LOCAL PASSWORD VAULT
+STATUS ........ DEVELOPMENT / REVIEW REQUIRED
 PLATFORM ...... WINDOWS 10/11 · WPF
 CRYPTO ........ AES-256-GCM · ARGON2ID · TPM
 LINK .......... /SecureVault
@@ -29,18 +29,17 @@ LINK .......... /SecureVault
 ## // 01 :: SIGNAL
 
 SecureVault is an offline-first WPF application that stores your passwords,
-secrets, and files in an encrypted vault that **never leaves your machine**.
+secrets, and files in a local encrypted vault. Optional backup and sync can copy
+that encrypted file off the device.
 It offers optional sync and backup via user-chosen storage (folders, drives,
-cloud-synced directories), a cryptographic password generator, a local
-breach & phishing health scan, and a tamper-evident audit log.
+cloud-synced directories), a cryptographic password generator, an online breach check and local
+phishing heuristics, and a tamper-evident audit log.
 
 ---
 
 ## Features
 
-- **Hardware-backed encryption** — the vault is sealed with a key bound to
-  your TPM 2.0 module. The master password or Windows Hello unlocks it; the
-  raw encryption key never exists outside your device.
+- Optional hardware key wrapping attempts TPM-backed RSA and falls back to current-user DPAPI when the TPM operation fails. Password unlock remains available. The decrypted data-encryption key is held in managed memory while the vault is unlocked. Hardware unlock is not by itself a verified Windows Hello prompt.
 - **AES-256-GCM** per-item encryption with random nonces, all stored inside a
   versioned, tamper-evident vault format (`.svault`).
 - **Password generator** — cryptographically secure random passwords *and*
@@ -58,16 +57,18 @@ breach & phishing health scan, and a tamper-evident audit log.
 
 ## Security model
 
+Read the [implementation review](docs/IMPLEMENTATION_REVIEW.md) before storing real secrets.
+
 Read [`docs/security.md`](docs/security.md) for the full design and
 [`docs/architecture.md`](docs/architecture.md) for how it fits together.
 
 | Threat | Mitigation |
 | --- | --- |
-| Lost/stolen device | Vault sealed with TPM-bound key; unlock requires master password or Windows Hello. |
-| Offline brute force | Strong key derivation (Argon2id-style) + rate limiting. |
-| Sync storage compromise | Vault is AES-256-GCM encrypted; plaintext is never written. |
+| Lost/stolen device | Password-derived wrapping; optional TPM/DPAPI wrapping. Actual protection depends on configuration and the Windows account. |
+| Offline brute force | Argon2id increases password-guessing cost; UI rate limits do not constrain offline attackers. |
+| Sync storage compromise | Vault is AES-256-GCM encrypted; Secret payloads are encrypted; some metadata is plaintext. See the security model. |
 | Clipboard snooping | Auto-clearing clipboard with configurable timeout. |
-| Malware reading process memory | Key material never held in managed memory for longer than needed; native buffer zeroing. |
+| Malware reading process memory | No protection guarantee against malware in the unlocked process. Keys reside in managed arrays and are zeroed on normal lock. |
 
 See also our vulnerability disclosure policy in [`SECURITY.md`](SECURITY.md).
 
@@ -95,10 +96,10 @@ dotnet run --project src/SecureVault.App -c Release
 > The first time you run a downloaded executable, Windows SmartScreen may
 > prompt. If you have not verified the checksum, do not continue.
 
-## Screenshots
+## UI design previews
 
-The app ships with a minimalist dark theme (see `Theme.xaml`); the previews
-below are rendered from that exact palette.
+The SVGs below are illustrative UI mockups, not captured application screenshots.
+They show the intended dark visual style and do not verify feature behavior.
 
 | Unlock | Items |
 | --- | --- |
