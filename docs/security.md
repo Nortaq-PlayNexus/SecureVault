@@ -79,14 +79,11 @@ Every integrity value is `HMAC-SHA256(key=integrityKey, ...)` computed in consta
 
 ### Hash-chained audit log
 
-Each audit event's hash covers the previous event's hash. Truncating, reordering, or editing
-the log breaks the chain and is detected by `VerifyAuditChain`.
+Each audit event's hash covers the previous event's hash. The verifier checks the retained chain for edits and broken links. Removing a valid suffix (including every row) is not detected without an independently trusted final hash and length.
 
 ### Rollback detection
 
-Item rows and their version-history snapshots are MACed independently. Rolling an item back to
-an old state changes `version`/`updated_at`, which is covered by the row MAC — an attacker
-cannot silently restore an old snapshot.
+Item writes include MACs, but GetVersions currently reads historical snapshots without verifying their stored MAC. A complete older row with its valid MAC, or an older database snapshot, cannot be distinguished from the latest state without an external trusted freshness reference. MACs alone do not prevent rollback.
 
 ## Privacy of networked features
 
@@ -95,7 +92,7 @@ cannot silently restore an old snapshot.
 `CheckPasswordAsync` sends only `SHA-1(password)[0..5]` (5 hex chars) to
 `https://api.pwnedpasswords.com/range/{prefix}` and compares the returned suffix list locally.
 The full hash and the password never leave the device. SHA-1 is intentionally used here — the
-HIBP protocol requires it, and prefix disclosure is not a preimage leak at 20 bits.
+HIBP protocol requires it, but the disclosed prefix and request metadata still reveal information to the service.
 
 ### Phishing detection
 
@@ -112,7 +109,7 @@ logged, or sent.
 - `ClipboardGuard` clears copied secrets after a configurable delay (default 30 s), only when
   the copied text still matches what we put there.
 - `AutoLockService` locks the vault after inactivity (default 5 min), zeroing in-memory keys.
-- On lock, the DEK and integrity key are removed from memory and `VaultDatabase` is disposed.
+- Normal Lock zeroes the DEK and integrity-key arrays; the database is disposed by Dispose, not Lock. Managed copies and an already compromised process are outside this guarantee.
 
 ## Recommended deployment hygiene
 
